@@ -18,6 +18,14 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: '744Fqra6xBQnm2FQS7OdaAtt',
+        version: 'draft',
+        languages: ['de', 'at'] // Optional parameter. Omission will retrieve all languages by default.
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
