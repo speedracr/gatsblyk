@@ -7,22 +7,21 @@ import SbEditable from 'storyblok-react'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import DynamicComponent from "../components/dynamicComponent"
+import useStoryblok from "../lib/storyblok"
 
 const IndexPage = ({ data, location }) => {
   let story = data.storyblokEntry
-  const content = JSON.parse(story.content)
+  story = useStoryblok(story, location)
 
-  const components = content.body.map(blok => {
+  const components = story.content.body.map(blok => {
     return (<DynamicComponent blok={blok} key={blok._uid} />)
   })
 
     return (
   <Layout>
     <Seo title="Home" />
-    <h1>{ content.title }</h1>
+    <h1>{ story.content.title }</h1>
     { components }
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
     <StaticImage
       src="../images/gatsby-astronaut.png"
       width={300}
